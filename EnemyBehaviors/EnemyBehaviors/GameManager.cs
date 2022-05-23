@@ -23,7 +23,7 @@ namespace EnemyBehaviors {
         KeyboardState previousState;
 
         int iScreen;
-        public const int TOTAL_SCREENS = 5;
+        public const int TOTAL_SCREENS = 6;
         public const int UNIT_SIZE = 64;
 
         public GameManager() {
@@ -198,6 +198,8 @@ namespace EnemyBehaviors {
                 strTitle = "Move, Stop, Change Direction";
             } else if (iScreen == 4) {
                 strTitle = "Orbital Children";
+            } else if (iScreen == 5) {
+                strTitle = "Orbital Children - variable radius\nplus moving";
 
             }
 
@@ -334,6 +336,15 @@ namespace EnemyBehaviors {
                 enemy = new EnemyOrbital(sprEnemy, this);
                 ((EnemyOrbital)enemy).setChildren(4, 1f, -1f);
                 enemy.setPosition(UNIT_SIZE * 2, UNIT_SIZE * 6);
+                enemies.Add(enemy);
+
+            } else if (iScreen == 5) {
+                Enemy enemy;
+
+                //enemy 1
+                enemy = new EnemyOrbitalVariableRadiusPlusMoving(sprEnemy, this);
+                ((EnemyOrbitalVariableRadiusPlusMoving)enemy).setChildren(8, 1f, 3f, 0.5f);
+                enemy.setPosition(UNIT_SIZE * 4, UNIT_SIZE * 4);
                 enemies.Add(enemy);
 
             }
